@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Process - ACS Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/header-style.css">
+    <link rel="stylesheet" href="../CSS/admin-create-style.css">
+</head>
+
+<body class="dynamic-body">
+
+    <div id="header-container"></div>
+
+    <main class="advisor-container">
+        <div class="page-header">
+            <a href="admin-process.html" class="back-btn">
+                <i class="fa-solid fa-chevron-left"></i> Back
+            </a>
+            <h1 class="page-title-center">Create Assignment or Anouncement</h1>
+        </div>
+
+        <div class="type-selector-wrapper">
+            <div class="type-selector">
+                <button class="type-btn active" id="type-assignment"
+                    onclick="toggleType('assignment')">Assignment</button>
+                <button class="type-btn" id="type-announcement"
+                    onclick="toggleType('announcement')">Announcement</button>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0; font-size: 18px; font-weight: 800;">Process Information</h3>
+                <div id="created-timestamp"
+                    style="display: none; background: #F1F5F9; padding: 6px 12px; border-radius: 8px; font-size: 13px; color: #475569; font-weight: 600; border: 1px solid #E2E8F0;">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Created: <span id="time-text"></span>
+                </div>
+            </div>
+
+            <div class="input-field">
+                <label>Topic Name <span style="color:red">*</span></label>
+                <input type="text" class="custom-input" id="topic-name" placeholder="Enter topic name here...">
+            </div>
+
+            <div class="input-field">
+                <label>Description</label>
+                <textarea class="custom-textarea" id="description"
+                    placeholder="Instructions for students..."></textarea>
+            </div>
+
+            <div class="input-field">
+                <label>Attachments (Max 10)</label>
+                <div class="pretty-upload-box" onclick="document.getElementById('file-upload').click()">
+                    <i class="fa-solid fa-cloud-arrow-up cloud-icon"></i>
+                    <p>Click to browse or drag and drop files here</p>
+                    <span>Support .pdf, .zip, .jpg, .png</span>
+                    <input type="file" id="file-upload" multiple hidden>
+                </div>
+            </div>
+
+            <!-- ค้นหาและเปลี่ยนส่วนวันที่ในไฟล์ advisor-create.html ด้วยโค้ดนี้ครับ -->
+
+            <!-- 🌟 ส่วนที่ 1: Schedule a Publish Date (ปรับใหม่ให้คลีน) -->
+            <div class="input-field">
+                <label>Schedule a Publish Date <span style="font-weight: normal; color: #888;">(Default:
+                        Now)</span></label>
+                <div class="date-time-grid">
+                    <input type="date" class="custom-input" id="publish-date">
+                    <input type="time" class="custom-input" id="publish-time">
+                </div>
+            </div>
+
+            <!-- 🌟 ส่วนที่ 2: Due Date (ปรับให้โครงสร้างเหมือนด้านบน) -->
+            <div id="due-date-section" class="input-field">
+                <label>Due Date</label>
+                <div class="date-time-grid">
+                    <input type="date" class="custom-input" id="due-date">
+                    <input type="time" class="custom-input" id="due-time">
+                </div>
+            </div>
+
+            <button class="btn-post-now" onclick="handlePost()">Post Now</button>
+        </div>
+
+        <div id="tracking-section">
+            <div class="tracking-header">
+                <h3 class="section-title">Submission Tracking</h3>
+                <button class="btn-download-zip" onclick="downloadAllFiles()">
+                    <i class="fa-solid fa-file-zipper"></i> Download All
+                </button>
+            </div>
+            <div id="submission-list"></div>
+        </div>
+      
+   
+    </main>
+    
+
+    <script src="../JS/header.js"></script>
+    <script src="../JS/admin-create-script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+/* header-style.css */
+.top-nav {
+    position: fixed; /* เปลี่ยนเป็น fixed ให้ลอยติดหน้าจอเสมอเวลาเลื่อน */
+    top: 15px; /* เว้นระยะห่างจากขอบบนจอ 15px */
+    left: 50%; /* ดันมาตรงกลาง */
+    transform: translateX(-50%); /* จัดกึ่งกลางให้เป๊ะแบบ Auto */
+    z-index: 1000;
+    
+    background-color: rgba(0, 0, 0, 0.85); /* ดำโปร่งแสงนิดๆ ให้ดูหรู */
+    backdrop-filter: blur(10px); /* ทำพื้นหลังเบลอ (ฟีลกระจกฝ้าแบบ Apple) */
+    color: var(--white, #FFFFFF);
+    padding: 0 20px;
+
+    box-sizing: border-box; /* สำคัญมาก: กันรูปดันแถบจนเพี้ยน */
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* การตั้งค่าความกว้าง Auto ให้ Responsive */
+    width: calc(100% - 30px); /* กว้างเต็มจอ แต่หักขอบซ้ายขวาออก 30px */
+    max-width: 1200px; /* ถ้ายืดบนจอคอม จะกว้างสุดแค่นี้ เพื่อไม่ให้ยาวเกินไป */
+    
+    border-radius: 50px; /* มุมโค้งมนแบบแคปซูล (Dynamic Island) */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* เงาให้ดูมีมิติลอยขึ้นมา */
+    transition: all 0.3s ease;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    margin-left: -8px;
+}
+
+.nav-logo img {
+    height: 65px; /* กำหนดความสูงให้พอดีกับ Bar */
+    width: auto;  /* ให้ความกว้างปรับตามอัตราส่วนรูป */
+    display: block;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.nav-logo-placeholder:hover {
+    transform: scale(1.05);
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-icons i {
+    font-size: 22px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.nav-icons i:hover {
+    color: var(--secondary-color, #EADCC8);
+    transform: scale(1.1); /* เวลาเอาเมาส์ชี้ให้ไอคอนใหญ่ขึ้นนิดนึง */
+}
+
+/* จุดสีแดงแจ้งเตือน (ปรับขนาดให้เล็กลงและมินิมอลขึ้น) */
+.noti-badge {
+    position: absolute;
+    top: 0px; /* ขยับตำแหน่งให้พอดีกับกระดิ่ง */
+    right: 0px;
+    width: 7px;  /* ลดขนาดลง */
+    height: 7px; /* ลดขนาดลง */
+    background-color: #EF4444; /* สีแดง */
+    border-radius: 50%;
+    pointer-events: none; /* ไม่ให้จุดแดงขวางการคลิกกระดิ่ง */
+}
+
+/* เพิ่ม CSS สำหรับข้อความตรงกลาง Header */
+.nav-subject-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white, #FFFFFF);
+    letter-spacing: 0.5px;
+    white-space: nowrap; /* ป้องกันข้อความตกบรรทัด */
+}

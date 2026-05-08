@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --text-dark: #333;
+    --white: #FFFFFF;
+    --accent: #5D9C96;
+    --border: #EAEAEA;
+    --bg: #F5F7F9; /* สีพื้นหลังอ่อนๆ ให้กล่องลอยเด่นขึ้น */
+}
+
+body.dynamic-body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); }
+
+/* 🌟 คุมความกว้าง 1200px ให้ตรง Header */
+.advisor-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 60px 20px;
+    box-sizing: border-box;
+}
+
+/* 🌟 Header Style (เหมือนหน้า Process นักศึกษาเป๊ะ) */
+.page-header { display: flex; align-items: center; margin-bottom: 30px; position: relative; }
+.back-btn { font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text-dark); text-decoration: none; position: absolute; left: 0; font-size: 16px; transition: 0.2s; }
+.back-btn:hover { color: #000; transform: translateX(-2px); }
+.page-title-center { width: 100%; text-align: center; font-size: 20px; font-weight: 800; margin: 0; }
+
+/* 🌟 Type Selector (ปุ่มตรงกลางแบบแคปซูล) */
+.type-selector-wrapper { display: flex; justify-content: center; margin-bottom: 30px; }
+.type-selector { background: #E9ECEF; padding: 6px; border-radius: 12px; display: inline-flex; gap: 5px; }
+.type-btn { padding: 12px 35px; border-radius: 8px; border: none; background: transparent; font-weight: 700; cursor: pointer; font-size: 14px; color: #555; transition: 0.2s; }
+.type-btn.active { background: #000; color: #FFF; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+/* 🌟 Section Cards */
+.section-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 35px 30px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.section-header h3 { margin: 0 0 20px 0; font-size: 18px; font-weight: 800; }
+
+/* Inputs */
+.input-field { margin-bottom: 25px; width: 100%; }
+.input-field label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 10px; color: #222; }
+.custom-input, .custom-textarea { width: 100%; padding: 15px; border: 1px solid #D1D5DB; border-radius: 12px; font-family: inherit; font-size: 14px; box-sizing: border-box; outline: none; transition: 0.2s; background: #FFF; }
+.custom-input:focus, .custom-textarea:focus { border-color: #000; box-shadow: 0 0 0 3px rgba(0,0,0,0.05); }
+.custom-textarea { min-height: 120px; resize: vertical; }
+
+/* Upload Box */
+.pretty-upload-box { border: 2px dashed #CBD5E1; border-radius: 16px; padding: 40px 20px; text-align: center; cursor: pointer; background: #F8FAFC; color: #64748B; transition: 0.2s; }
+.pretty-upload-box:hover { border-color: var(--accent); background: #F0FDF4; }
+.cloud-icon { font-size: 40px; margin-bottom: 12px; color: var(--accent); }
+.pretty-upload-box p { margin: 0 0 5px 0; font-weight: 700; font-size: 15px; color: #334155; }
+.pretty-upload-box span { font-size: 12px; }
+
+/* ค้นหาและอัปเดตส่วน date-time-grid ในไฟล์ advisor-create-style.css */
+
+.date-time-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* แบ่งครึ่งซ้ายขวาบนจอคอม */
+    gap: 15px; /* ระยะห่างระหว่างวันที่กับเวลา */
+    width: 100%;
+}
+
+/* 📱 แก้ไขจุดที่ทำให้ Responsive พัง */
+@media (max-width: 600px) {
+    .date-time-grid {
+        grid-template-columns: 1fr; /* บนมือถือเปลี่ยนเป็นแนวตั้ง 1 แถวเต็ม */
+        gap: 10px;
+    }
+    
+    /* ปรับ Padding ของ Container บนมือถือให้แคบลงหน่อย */
+    .advisor-container {
+        padding: 80px 15px 30px 15px;
+    }
+}
+
+/* เพิ่มเติมสไตล์ให้ Input ดูเต็มพื้นที่ */
+.custom-input {
+    width: 100%;
+    min-height: 48px; /* ความสูงมาตรฐานให้กดง่ายบนจอสัมผัส */
+}
+.btn-post-now { width: 100%; padding: 18px; border-radius: 12px; border: none; font-size: 16px; font-weight: 800; background: #000; color: #FFF; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+.btn-post-now:hover { background: #333; transform: translateY(-2px); }
+
+/* 🌟 Submission Accordion */
+.tracking-header { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; margin-bottom: 20px; }
+.section-title { font-size: 18px; font-weight: 800; margin: 0; }
+.btn-download-zip { background: var(--accent); color: white; border: none; padding: 12px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+.btn-download-zip:hover { background: #4a7d78; }
+
+.tracking-item { background: var(--white); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.01); transition: 0.2s; }
+.tracking-item:hover { border-color: #CCC; }
+
+.tracking-header-row { display: flex; justify-content: space-between; align-items: center; padding: 22px 30px; cursor: pointer; transition: 0.2s; }
+.group-info h4 { margin: 0 0 6px 0; font-size: 16px; font-weight: 800; color: #111; }
+.project-names { font-size: 13px; color: #666; line-height: 1.5; display: flex; flex-direction: column; }
+
+.status-section { display: flex; align-items: center; gap: 20px; }
+.submit-time { font-size: 13px; color: #888; display: flex; align-items: center; gap: 5px; }
+
+/* Status Badges */
+.status-badge { padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; }
+.status-badge.ontime { background: #E6F4F1; color: #0D9488; }
+.status-badge.late { background: #FEF3C7; color: #D97706; }
+.status-badge.missing { background: #FEE2E2; color: #DC2626; }
+
+/* 🌟 ลูกศรหมุน */
+.chevron-icon { color: #999; font-size: 16px; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.tracking-item.active .chevron-icon { transform: rotate(180deg); color: #000; }
+
+.tracking-body { display: none; padding: 0 30px 30px 30px; border-top: 1px dashed #EEE; margin-top: -5px; }
+.tracking-item.active .tracking-body { display: block; animation: slideDown 0.3s ease-out; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.body-label { font-size: 14px; font-weight: 800; margin: 25px 0 10px 0; color: #111; }
+.member-list { font-size: 14px; color: #555; line-height: 1.8; }
+
+/* ป้ายไฟล์ */
+.file-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.file-card { display: flex; align-items: center; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; overflow: hidden; transition: 0.2s; }
+.file-card:hover { border-color: var(--accent); }
+.file-name-part { padding: 10px 15px; font-size: 13px; font-weight: 700; color: #334155; border-right: 1px solid #E2E8F0; }
+.file-actions-part { display: flex; }
+.action-icon-btn { padding: 10px 14px; cursor: pointer; color: #64748B; transition: 0.2s; font-size: 14px; }
+.action-icon-btn:hover { background: #E2E8F0; color: var(--accent); }
+.action-icon-btn.view:hover { color: #1A365D; }
+
+/* กล่อง Comment */
+.comment-area { display: flex; align-items: center; gap: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #F1F5F9; }
+.comment-input { flex: 1; padding: 14px 20px; border: 1px solid #E2E8F0; border-radius: 30px; font-size: 14px; outline: none; background: #F8FAFC; transition: 0.2s; }
+.comment-input:focus { border-color: #94A3B8; background: #FFF; }
+.btn-send { background: none; border: none; color: #94A3B8; cursor: pointer; font-size: 22px; transition: 0.2s; padding: 0 10px; }
+.btn-send:hover { color: #000; transform: scale(1.1); }
+
+@media (max-width: 768px) {
+    .tracking-header-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .status-section { width: 100%; justify-content: space-between; }
+    .date-time-grid { grid-template-columns: 1fr; }
+}

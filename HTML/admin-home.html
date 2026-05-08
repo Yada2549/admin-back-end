@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home - ACS Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/header-style.css">
+    <link rel="stylesheet" href="../CSS/admin-home-style.css">
+</head>
+<body class="dynamic-body">
+    <div id="header-container"></div>
+    
+    <main class="advisor-container">
+        <div class="page-header">
+            <h1 class="page-title-center">Admin Home</h1>
+        </div>
+
+        <div class="admin-top-bar">
+            <!-- ตัวกรองเทอม -->
+            <div class="term-filter-box">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span class="filter-label">Academic Term</span>
+                <select id="term-selector" class="custom-select" onchange="fetchClasses()">
+                </select>
+            </div>
+            
+            <!-- 🌟 ปุ่ม Action ใช้สี/สไตล์เดียวกันเป๊ะ -->
+            <div class="admin-actions">
+                <button class="btn-action-primary" onclick="toggleModal('termModal')">
+                    <i class="fa-solid fa-calendar-plus"></i> Add Term
+                </button>
+                <button class="btn-action-primary" onclick="toggleModal('subjectModal')">
+                    <i class="fa-solid fa-book-medical"></i> Add Subject
+                </button>
+            </div>
+        </div>
+
+        <div id="class-list-container"></div>
+    </main>
+
+    <!-- Modal 1: เพิ่มเทอมใหม่ -->
+    <div id="termModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Create New Term</h3>
+                <button class="close-modal" onclick="toggleModal('termModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Semester</label>
+                        <select id="new-semester" class="custom-input">
+                            <option value="1">Semester 1</option>
+                            <option value="2">Semester 2</option>
+                            <option value="Summer">Summer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Academic Year (e.g. 2026)</label>
+                        <input type="number" id="new-year" class="custom-input" placeholder="2026">
+                    </div>
+                </div>
+                <button class="btn-confirm" onclick="saveNewTerm()">Create Term</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: เพิ่มรายวิชาใหม่ -->
+    <div id="subjectModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Add New Subject</h3>
+                <button class="close-modal" onclick="toggleModal('subjectModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Target Term</label>
+                    <select id="target-term" class="custom-input"></select>
+                </div>
+                <div class="form-group">
+                    <label>Subject ID</label>
+                    <input type="text" id="new-subject-id" class="custom-input" placeholder="e.g. CSS493">
+                </div>
+                <div class="form-group">
+                    <label>Subject Name</label>
+                    <input type="text" id="new-subject-name" class="custom-input" placeholder="e.g. Special Topics">
+                </div>
+                <button class="btn-confirm" onclick="saveNewSubject()">Add Subject</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/admin-header.js"></script>
+    <script src="../JS/admin-home-script.js"></script>
+</body>
+</html>

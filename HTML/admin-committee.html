@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Committee Management - ACS Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/header-style.css">
+    <link rel="stylesheet" href="../CSS/admin-committee-style.css">
+</head>
+<body class="dynamic-body">
+    <div id="header-container"></div>
+
+    <main class="committee-container">
+        <div class="page-header">
+            <a href="admin-process.html" class="back-btn">
+                <i class="fa-solid fa-chevron-left"></i> Back
+            </a>
+            <h1 class="page-title-center">Project Defense Committee</h1>
+        </div>
+
+        <div class="action-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search Group ID..." onkeyup="handleSearch()">
+            </div>
+            <button class="btn-import-trigger" onclick="toggleModal(true)">
+                <i class="fa-solid fa-plus"></i> Add Committee
+            </button>
+        </div>
+
+        <div class="table-card">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th style="width: 150px;">Group ID</th>
+                        <th>Committee Members</th>
+                        <th style="width: 120px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="committeeTableBody"></tbody> 
+            </table>
+        </div>
+        </main>
+
+    <div id="committeeModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+    <h3 id="modalTitle">Set Up Committee</h3> <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+</div>
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Group ID</label>
+                    <input type="text" id="group-id" placeholder="e.g. G01" class="custom-input">
+                </div>
+                <div id="members-input-container">
+                    <label>Committee Members</label>
+                    <div class="committee-input-row">
+                        <input type="text" placeholder="Prefix" class="custom-input pref" style="width: 80px;">
+                        <input type="text" placeholder="First Name" class="custom-input fname">
+                        <input type="text" placeholder="Last Name" class="custom-input lname">
+                        <span style="width: 30px;"></span>
+                    </div>
+                </div>
+                <button class="btn-add-row" onclick="addMemberInputRow()">
+                    <i class="fa-solid fa-plus"></i> Add Another Member
+                </button>
+                <button class="btn-confirm" onclick="saveCommittee()">Add Committee Group</button>
+            </div>
+        </div>
+    </div>
+ื
+    <script src="../JS/header.js"></script>
+    <script src="../JS/admin-committee-script.js"></script>
+</body>
+</html>

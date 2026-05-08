@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management - ACS Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/header-style.css"> 
+    <link rel="stylesheet" href="../CSS/admin-students-style.css"> 
+</head>
+<body class="dynamic-body">
+
+    <div id="header-container"></div>
+
+    <main class="advisor-container">
+        <div class="page-header">
+            <a href="admin-process.html" class="back-btn">
+                <i class="fa-solid fa-chevron-left"></i> Back
+            </a>
+            <h1 class="page-title-center">Students</h1>
+        </div>
+
+        <div class="action-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search by name or ID..." onkeyup="handleSearch()">
+            </div>
+            <button class="btn-import-trigger" onclick="toggleModal(true)">
+                <i class="fa-solid fa-plus"></i> Import
+            </button>
+        </div>
+
+        <div class="table-card">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Student Name</th>
+                        <th class="hide-mobile">Gmail Account</th>
+                        <th style="text-align: center;">Action</th> </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="editModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Edit Student Info</h3>
+                <button class="close-modal" onclick="toggleEditModal(false)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input type="text" id="edit-id" class="custom-input" readonly style="background: #f9f9f9; color: #888;">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="edit-fname" class="custom-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="edit-lname" class="custom-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Gmail Account</label>
+                    <input type="email" id="edit-gmail" class="custom-input">
+                </div>
+                <button class="btn-confirm" onclick="saveEditStudent()">Update Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="importModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Add New Students</h3>
+                <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+            </div>
+            
+            <div class="modal-tabs">
+                <button class="tab-link active" onclick="switchModalTab(event, 'manual')">Manual</button>
+                <button class="tab-link" onclick="switchModalTab(event, 'excel')">Excel / CSV</button>
+            </div>
+
+            <div class="modal-body">
+                <div id="manual" class="tab-content active">
+                    <div class="form-group">
+                        <label>Student ID</label>
+                        <input type="text" id="new-id" placeholder="e.g. 67090500xxx" class="custom-input">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="new-fname" placeholder="First Name" class="custom-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="new-lname" placeholder="Last Name" class="custom-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Gmail</label>
+                        <input type="email" id="new-gmail" placeholder="example@mail.kmutt.ac.th" class="custom-input">
+                    </div>
+                    <button class="btn-confirm" onclick="saveManualStudent()">Add to List</button>
+                </div>
+
+                <div id="excel" class="tab-content">
+                    <div class="dropzone" onclick="document.getElementById('fileUpload').click()">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Click or drag file to upload</p>
+                        <span>Support .xlsx, .csv files</span>
+                        <input type="file" id="fileUpload" hidden accept=".csv, .xlsx">
+                    </div>
+                    <button class="btn-confirm secondary" onclick="simulateExcelImport()">Process & Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/header.js"></script> 
+    <script src="../JS/admin-students-script.js"></script> 
+</body>
+</html>

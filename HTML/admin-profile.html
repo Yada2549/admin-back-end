@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile - ACS Lab</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/header-style.css">
+    <link rel="stylesheet" href="../CSS/student-profile-style.css">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+</head>
+<body class="dynamic-body">
+    <div id="header-container"></div>
+
+    <div class="advisor-container">
+        <div class="page-header">
+            <a href="admin-process.html" class="back-btn">
+                <i class="fas fa-chevron-left"></i> Back
+            </a>
+            <h2 class="page-title-center">Admin Profile</h2>
+        </div>
+
+        <div class="profile-layout">
+            <div class="profile-card">
+                <div class="profile-image-section">
+                    <div class="image-wrapper">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=111&color=fff&size=150" alt="Profile" id="profile-preview">
+                        <label for="profile-upload" class="upload-badge">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                        <input type="file" id="profile-upload" accept="image/*" hidden>
+                    </div>
+                </div>
+
+                <div class="profile-info-section">
+                    <div class="info-group">
+                        <label>Admin ID</label>
+                        <input type="text" id="admin-id-input" class="custom-input" style="cursor: text;">
+                    </div>
+                    <div class="info-group">
+                        <label>First Name</label>
+                        <input type="text" id="admin-fname-input" class="custom-input" style="cursor: text;">
+                    </div>
+                    <div class="info-group">
+                        <label>Last Name</label>
+                        <input type="text" id="admin-lname-input" class="custom-input" style="cursor: text;">
+                    </div>
+                    <div class="info-group">
+                        <label>Email</label>
+                        <input type="email" id="admin-email-input" class="custom-input" style="cursor: text;">
+                    </div>
+                    <button id="btn-save-profile" class="btn-confirm" style="margin-top: 10px; background: #5D9C96;">
+                        Update Profile Information
+                    </button>
+                </div>
+            </div>
+
+            <div class="calendar-card">
+                <div class="calendar-header-custom" style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>System Schedule</h3>
+                    <button class="btn-action-primary" id="btn-add-event" style="background: #111; color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-plus"></i> Add Event
+                    </button>
+                </div>
+                <div id='calendar'></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="add-event-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Add System Event</h3>
+                <button class="close-modal" id="close-add-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Academic Term</label>
+                    <select id="event-term" class="custom-input" style="background: #fff; cursor: pointer;"></select>
+                </div>
+                <div class="form-group">
+                    <label>Subject Scope</label>
+                    <select id="event-subject" class="custom-input" style="background: #fff; cursor: pointer;">
+                        <option value="ALL">All Subjects</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Topic / Title</label>
+                    <input type="text" id="event-title" class="custom-input" placeholder="e.g., Final Presentation" style="background: #fff; cursor: text;">
+                </div>
+                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="event-date" class="custom-input" style="background: #fff; cursor: text;">
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" id="event-time" class="custom-input" style="background: #fff; cursor: text;">
+                    </div>
+                </div>
+            </div>
+            <button class="btn-confirm" id="btn-save-event">Save Event</button>
+        </div>
+    </div>
+
+    <div id="calendar-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Event Details</h3>
+                <button class="close-modal" id="close-detail-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="detail-modal-body"></div>
+            <button class="btn-confirm" id="btn-ok-detail">Close</button>
+        </div>
+    </div>
+
+    <script src="../JS/admin-header.js"></script>
+    <script src="../JS/admin-profile-script.js"></script>
+</body>
+</html>

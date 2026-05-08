@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advisor Management - ACS Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/header-style.css">
+    <link rel="stylesheet" href="../CSS/admin-advisors-style.css">
+</head>
+<body class="dynamic-body">
+    <div id="header-container"></div>
+
+    <main class="advisor-container">
+        <div class="page-header">
+            <a href="admin-process.html" class="back-btn">
+                <i class="fa-solid fa-chevron-left"></i> Back
+            </a>
+            <h1 class="page-title-center">Advisors</h1>
+        </div>
+
+        <div class="action-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search by name, ID or group..." onkeyup="handleSearch()">
+            </div>
+            <button class="btn-import-trigger" onclick="toggleModal(true)">
+                <i class="fa-solid fa-plus"></i> Import
+            </button>
+        </div>
+
+        <div class="table-card">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Group ID</th> <th>Prefix</th>
+                        <th>Name</th>
+                        <th class="hide-mobile">Gmail Account</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="advisorTableBody">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="editModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Edit Advisor Info</h3>
+                <button class="close-modal" onclick="toggleEditModal(false)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Advisor ID</label>
+                        <input type="text" id="edit-id" class="custom-input" readonly style="background: #f4f4f4; color: #888;">
+                    </div>
+                    <div class="form-group">
+                        <label>Group ID</label>
+                        <input type="text" id="edit-group-id" class="custom-input" placeholder="e.g. G01">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Prefix (Title)</label>
+                    <input type="text" id="edit-prefix" class="custom-input">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" id="edit-fname" class="custom-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="edit-lname" class="custom-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Gmail Account</label>
+                    <input type="email" id="edit-gmail" class="custom-input">
+                </div>
+                <button class="btn-confirm" onclick="saveEditAdvisor()">Update Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="importModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Add New Advisors</h3>
+                <button class="close-modal" onclick="toggleModal(false)">&times;</button>
+            </div>
+            <div class="modal-tabs">
+                <button class="tab-link active" onclick="switchModalTab(event, 'manual')">Manual</button>
+                <button class="tab-link" onclick="switchModalTab(event, 'excel')">Excel / CSV</button>
+            </div>
+            <div class="modal-body">
+                <div id="manual" class="tab-content active">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Advisor ID</label>
+                            <input type="text" id="new-id" placeholder="e.g. ADV001" class="custom-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Group ID</label>
+                            <input type="text" id="new-group-id" placeholder="e.g. G01" class="custom-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Prefix</label>
+                        <input type="text" id="new-prefix" placeholder="e.g. Dr., Asst. Prof." class="custom-input">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="new-fname" placeholder="First Name" class="custom-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="new-lname" placeholder="Last Name" class="custom-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Gmail Account</label>
+                        <input type="email" id="new-gmail" placeholder="example@mail.kmutt.ac.th" class="custom-input">
+                    </div>
+                    <button class="btn-confirm" onclick="saveManualAdvisor()">Add to List</button>
+                </div>
+
+                <div id="excel" class="tab-content">
+                    <div class="dropzone" onclick="document.getElementById('fileUpload').click()">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Click or drag file to upload</p>
+                        <span>Support .xlsx, .csv files</span>
+                        <input type="file" id="fileUpload" hidden accept=".csv, .xlsx">
+                    </div>
+                    <button class="btn-confirm secondary" onclick="processExcelImport()">Process & Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/header.js"></script>
+    <script src="../JS/admin-advisors-script.js"></script>
+</body>
+</html>

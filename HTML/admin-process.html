@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Subject Process - ACS Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/header-style.css">
+    <link rel="stylesheet" href="../CSS/admin-process-style.css">
+</head>
+<body class="dynamic-body">
+
+    <div id="header-container"></div>
+
+    <main class="advisor-container">
+        <div class="page-header">
+            <a href="admin-home.html" class="back-btn">
+                <i class="fa-solid fa-chevron-left"></i> Back
+            </a>
+            <h1 class="page-title-center" id="display-subject-name">CSS492 - Administration</h1>
+        </div>
+
+        <!-- 🌟 Admin Menu Grid -->
+        <div class="advisor-menu-grid">
+            <div class="menu-card" onclick="window.location.href='admin-students.html'">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>Manage Students</span>
+            </div>
+            <div class="menu-card" onclick="window.location.href='admin-advisors.html'">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <span>Manage Advisors</span>
+            </div>
+            <div class="menu-card" onclick="window.location.href='admin-groups.html'">
+                <i class="fa-solid fa-users-viewfinder"></i>
+                <span>Group Overview</span>
+            </div>
+
+            <div class="menu-card" onclick="window.location.href='advisor-dashboard.html'">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Score Dashboard</span>
+            </div>
+
+            <div class="menu-card" onclick="window.location.href='admin-create.html'">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span>Assignment & Announcements</span>
+            </div>
+
+            <div class="menu-card" onclick="window.location.href='admin-document-hub.html'">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Subject Documents</span>
+            </div>
+            
+        </div>
+        <div class="advisor-menu-grid">
+    <div class="menu-card" onclick="window.location.href='admin-committee.html'">
+        <i class="fa-solid fa-user-shield"></i> <span>Project Defense Committee</span>
+    </div>
+</div>
+
+        <div class="section-label">On Going</div>
+        <div id="ongoing-container"></div>
+
+        <div class="section-label">Assignments</div>
+        <div id="all-process-list"></div>
+
+        <!-- 🌟 Announcements Section (Accordion) -->
+        <div class="section-label">Announcements</div>
+        <div id="announcement-list-container" class="announcement-stack"></div>
+
+        <div class="bottom-action-area">
+            <button class="btn-create-new-bottom" onclick="window.location.href='admin-create.html'">
+                <i class="fa-solid fa-plus"></i> Create New Assignment or Announcement
+            </button>
+        </div>
+    </main>
+
+    <script src="../JS/admin-header.js"></script>
+    <script src="../JS/admin-process-script.js"></script>
+</body>
+</html>

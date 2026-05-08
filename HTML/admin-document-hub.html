@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Hub - Advisor | ACS Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../CSS/header-style.css">
+    <link rel="stylesheet" href="../CSS/document-hub-style.css">
+</head>
+<body class="dynamic-body">
+
+    <div id="header-container"></div>
+
+    <main class="advisor-container">
+        <div class="page-header">
+            <a href="admin-process.html" class="back-btn">
+                <i class="fa-solid fa-chevron-left"></i> Back
+            </a>
+            <h1 class="page-title-center">Subject Documents</h1>
+        </div>
+
+        <div class="controls-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Search by filename or uploader...">
+            </div>
+            
+            <div class="action-group">
+                <div class="sort-box">
+                    <span class="sort-label">Sort by:</span>
+                    <select id="sort-select" class="custom-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+                
+                <button class="btn-action-primary" id="btn-download-all">
+                    <i class="fa-solid fa-download"></i> Download All
+                </button>
+            </div>
+        </div>
+
+        <div id="file-list-container" class="file-list-wrapper">
+            <p style="text-align: center; color: #888; padding: 50px;">Loading documents...</p>
+        </div>
+    </main>
+
+    <script src="../JS/admin-header.js"></script>
+    <script src="../JS/admin-document-hub-script.js"></script>
+</body>
+</html>
